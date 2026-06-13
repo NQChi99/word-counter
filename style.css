@@ -150,3 +150,25 @@ textarea {
     opacity: 0;
     transition: opacity 0.5s ease;
 }
+
+.keywords {
+    grid-column: 3;
+    padding: 24px;
+    background-color: var(--white-color);
+    border-radius: 8px;
+    border: 2px solid var(--gray-color);
+    max-height: 420px;
+}
+
+.keywords p {
+    font-size: 1rem;
+    padding: 4px;
+}
+
+.keyword-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 6px 0;
+    border-bottom: 1px solid var(--gray-color);
+}

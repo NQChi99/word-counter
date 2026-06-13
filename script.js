@@ -14,6 +14,8 @@ const pastedTooltip = document.getElementById("tooltip-pasted");
 const copiedTooltip = document.getElementById("tooltip-copied");
 const clearedTooltip = document.getElementById("tooltip-cleared");
 
+const keyword = document.getElementById("keyword");
+
 // funkce na počet znaků
 const countCharacters = () => {
     let str = textInput.value;
@@ -56,8 +58,49 @@ const countAll = () => {
     numberParagraphs.textContent = countParagraphs();
 }
 
+// funkce na vypsání keywords
+const getKeywords = () => {
+    let str = textInput.value.trim();
+
+    if (str.length === 0) {
+        keyword.innerHTML = "";
+        return;
+    }
+    // text rozdělí na slova, malá písmena, odstraní interpunkci
+    let words = str.toLowerCase().match(/\b\w{2,}\b/g);
+
+    // objekt slovo:počet
+    let wordCount = {};
+
+    // spočítá výskyt slova
+    words.forEach(word => {
+        wordCount[word] = (wordCount[word] || 0) + 1;
+    });
+
+    // převede objekt na pole párů [slovo, počet], seřadí pole podle počtu, ukáže jen prvních 10 slov
+    let sorted = Object.entries(wordCount).sort((a, b) => b[1] - a[1]).slice(0, 10);
+
+    // vypíše každé slovo jako samotný element
+    keyword.innerHTML = "";
+    sorted.forEach(([word, count]) => {
+        let row = document.createElement("div");
+        row.classList.add("keyword-row");
+
+        let wordEl = document.createElement("span");
+        wordEl.textContent = word;
+
+        let countEl = document.createElement("span");
+        countEl.textContent = count;
+
+        row.appendChild(wordEl);
+        row.appendChild(countEl);
+        keyword.appendChild(row);
+    });
+}
+
 textInput.addEventListener("input", () => {
     countAll();
+    getKeywords();
 })
 
 copyBtn.addEventListener("click", () => {
@@ -75,6 +118,7 @@ pasteBtn.addEventListener("click", () => {
         .then((clipText) => {
             textInput.value = clipText;
             countAll();
+            getKeywords();
         });
 
     pastedTooltip.style.opacity = "1";
@@ -85,6 +129,7 @@ pasteBtn.addEventListener("click", () => {
 
 clearBtn.addEventListener("click", () => {
     textInput.value = "";
+    keyword.innerHTML = "";
     countAll();
 
     clearedTooltip.style.opacity = "1";
