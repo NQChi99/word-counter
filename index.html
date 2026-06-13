@@ -13,21 +13,20 @@
         <h1>Word Counter</h1>
         <section>
             <ul class="counters-section">
-                <li class="counter">Words<span>0</span></li>
-                <li class="counter">Characters<span>0</span></li>
-                <li class="counter">Sentences<span>0</span></li>
-                <li class="counter">Paragraphs<span>0</span></li>
+                <li class="label">Words<span id="words-number">0</span></li>
+                <li class="label">Characters<span id="characters-number">0</span></li>
+                <li class="label">Sentences<span id="sentences-number">0</span></li>
+                <li class="label">Paragraphs<span id="paragraphs-number">0</span></li>
             </ul>
         </section>
         <section>
-            <form>
-                <label for="textInput"></label>
-                <textarea name="textInput" id="textInput" placeholder="Start typing or copy your text here..." rows="20"
-                    cols="80"></textarea>
-                <input type="submit" id="submit-count" value="Count">
-            </form>
+            <label for="textInput"></label>
+            <textarea name="textInput" id="textInput" placeholder="Start typing or copy your text here..." rows="24"
+                cols="80"></textarea>
         </section>
     </main>
+
+    <script src="script.js"></script>
 </body>
 
 </html>
