@@ -66,8 +66,8 @@ const getKeywords = () => {
         keyword.innerHTML = "";
         return;
     }
-    // text rozdělí na slova, malá písmena, odstraní interpunkci
-    let words = str.toLowerCase().match(/\b\w{2,}\b/g);
+    // text rozdělí na slova, malá písmena, zachytí jakékoli písmeno v Unicode
+    let words = str.toLowerCase().match(/\p{L}{2,}/gu);
 
     // objekt slovo:počet
     let wordCount = {};
