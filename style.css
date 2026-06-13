@@ -1,8 +1,8 @@
 :root {
     --primary-color: #EEE0CC;
     --secondary-color: #BA6A4C;
-    --accent-color: #607456;
     --white-color: #F9F3EC;
+    --gray-color: #808080;
 }
 
 * {
@@ -23,12 +23,30 @@ main {
 }
 
 h1 {
-    font-size: 4em;
-    margin-top: 40px;
+    font-family: "Google Sans", sans-serif;
+    font-size: 3em;
+    text-transform: uppercase;
+    text-align: left;
+    width: 20%;
+}
+
+h2 {
+    text-align: center;
+    text-transform: uppercase;
+    padding-bottom: 16px;
+}
+
+.header {
+    display: flex;
+    margin-top: 56px;
+    align-items: center;
+    justify-content: center;
+    gap: 32px;
+
 }
 
 section {
-    margin: 8px 0;
+    margin: 16px 0;
 }
 
 .counters-section {
@@ -37,6 +55,7 @@ section {
     background-color: var(--white-color);
     font-weight: 600;
     border-radius: 8px;
+    letter-spacing: 2px;
 }
 
 .label {
@@ -51,9 +70,83 @@ section {
     font-size: 2rem;
 }
 
+.text-section {
+    display: grid;
+    grid-template-columns: 1fr 1fr 2fr;
+    max-width: 1280px;
+}
+
+.text-tools {
+    grid-column: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: flex-end;
+    gap: 24px;
+    max-height: 420px;
+}
+
+.text-tools button {
+    padding: 8px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    width: 96px;
+    border-radius: 8px;
+    border: 2px solid var(--gray-color);
+}
+
+.text-tools button:hover {
+    cursor: pointer;
+    filter: brightness(90%);
+}
+
 textarea {
+    grid-column: 2;
     background-color: var(--white-color);
     border-radius: 8px;
-    padding: 16px;
+    padding: 24px;
     font-size: 1rem;
+    margin: 0 32px;
+    border: 2px solid var(--gray-color);
+    max-width: 770px;
+}
+
+#tooltip-pasted {
+    position: absolute;
+    top: 200px;
+    left: 140px;
+    background-color: var(--gray-color);
+    color: var(--white-color);
+    padding: 8px;
+    border-radius: 8px;
+    z-index: 1;
+    opacity: 0;
+    transition: opacity 0.5s ease;
+}
+
+#tooltip-copied {
+    position: absolute;
+    top: 335px;
+    left: 140px;
+    background-color: var(--gray-color);
+    color: var(--white-color);
+    padding: 8px;
+    border-radius: 8px;
+    z-index: 1;
+    opacity: 0;
+    transition: opacity 0.5s ease;
+}
+
+#tooltip-cleared {
+    position: absolute;
+    top: 470px;
+    left: 140px;
+    background-color: var(--gray-color);
+    color: var(--white-color);
+    padding: 8px;
+    border-radius: 8px;
+    z-index: 1;
+    opacity: 0;
+    transition: opacity 0.5s ease;
 }
